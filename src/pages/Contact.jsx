@@ -17,16 +17,30 @@ function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:3000/api/contact' : '/.netlify/functions/contact';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    }
     
-    setSubmitStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' });
     setIsSubmitting(false);
-    
     setTimeout(() => setSubmitStatus(null), 3000);
   };
 
@@ -195,7 +209,19 @@ function Contact() {
                           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                           <polyline points="22 4 12 14.01 9 11.01"/>
                         </svg>
-                        Message sent successfully!
+                        Message sent to Telegram!
+                      </div>
+                    </div>
+                  )}
+                  {submitStatus === 'error' && (
+                    <div className="col-12">
+                      <div className="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="me-2">
+                          <circle cx="12" cy="12" r="10"/>
+                          <line x1="12" y1="8" x2="12" y2="12"/>
+                          <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        Failed to send. Please try again.
                       </div>
                     </div>
                   )}
