@@ -1,0 +1,37 @@
+.contact {
+  background: var(--bg-primary, #0a0a0f);
+  min-height: 100vh;
+}
+
+.form-control {
+  color: #e4e4e7;
+}
+
+.form-control:focus {
+  background: #1a1a24;
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 0.2rem rgba(34, 211, 238, 0.25);
+}
+
+.form-control::placeholder {
+  color: #71717a;
+}
+
+.btn-info {
+  background: linear-gradient(135deg, #22d3ee, #06b6d4);
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.4);
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+}
+
+.alert-success {
+  background: #1a2421;
+  border: none;
+  color: #22c55e;
+}

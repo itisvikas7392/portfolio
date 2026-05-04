@@ -1,0 +1,42 @@
+.projects {
+  background: var(--bg-primary, #0a0a0f);
+  min-height: 100vh;
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(34, 211, 238, 0.2);
+}
+
+.card-img-top > div:last-child {
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.card:hover .card-img-top > div:last-child {
+  opacity: 1;
+}
+
+.btn-info {
+  background: linear-gradient(135deg, #22d3ee, #06b6d4);
+  border: none;
+  font-weight: 600;
+}
+
+.btn-outline-secondary {
+  border-color: #3f3f46;
+  color: #a1a1aa;
+}
+
+.btn-outline-secondary:hover {
+  background: #3f3f46;
+  color: #fff;
+}
+
+.badge {
+  font-weight: 500;
+}

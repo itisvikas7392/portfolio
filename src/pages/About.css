@@ -1,0 +1,23 @@
+.about {
+  background: var(--bg-primary, #0a0a0f);
+  min-height: 100vh;
+}
+
+.progress {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #22d3ee, #06b6d4);
+}
+
+.badge {
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  background: #22d3ee !important;
+  color: #000 !important;
+  transform: translateY(-2px);
+}
